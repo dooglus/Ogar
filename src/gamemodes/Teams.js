@@ -43,6 +43,8 @@ Teams.prototype.getTeamColor = function(team) {
 
 Teams.prototype.onPlayerSpawn = function(gameServer,player) {
     // Random color based on team
+    player.team = player.name == 'x' ? 0 : 1;
+    console.log('spawn name', player.name, 'team', player.team);
     player.color = this.getTeamColor(player.team);
     // Spawn player
     gameServer.spawnPlayer(player);
@@ -57,7 +59,7 @@ Teams.prototype.onServerInit = function(gameServer) {
 
 Teams.prototype.onPlayerInit = function(player) {
     // Get random team
-    player.team = Math.floor(Math.random() * this.teamAmount);
+    // player.team = Math.floor(Math.random() * this.teamAmount);
 };
 
 Teams.prototype.onCellAdd = function(cell) {

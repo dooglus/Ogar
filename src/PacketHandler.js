@@ -86,11 +86,12 @@ PacketHandler.prototype.setNickname = function(newNick) {
     var client = this.socket.playerTracker;
     if (client.cells.length < 1) {
         // If client has no cells... then spawn a player
+        client.setName(newNick);
         this.gameServer.gameMode.onPlayerSpawn(this.gameServer,client);
 
         // Turn off spectate mode
         client.spectate = false;
     }
-client.setName(newNick);
+    client.setName(newNick);
 };
 
